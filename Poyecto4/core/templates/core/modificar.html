@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Modificar</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -48,81 +48,27 @@
           </div>
         </div>
       </nav>
-      <!--Encabezado-->
-      <header>
-        <div class="hero-image">
-            <div class="hero-text pt-5 mt-5">
-                <h1>Ground Zero</h1>
-                
-            </div>
-        </div>
-      </header>
-      <main>
-        <section id="servicios">
-          <div class="titulo2 mx-auto text-center py-5 bg-titulos" >
-            <h1>NUESTROS SERVICIOS</h1>
-        </div>
-        <div class="descripcion1 container pt-5 pb-3">
-            <p>Creamos experiencias de servicios, con el fin de ayudar a nuestros clientes a encontrar aquello que buscan o necesitan, 
-              con la mayor red de proveedores para que tú puedas encontrar aquello que buscas a un precio justo.</p>
-        </div>
-
-        </section>
-         <!--Sección de proveedores-->
-         <section id="proveedores">
-          <div class="titulo2 mx-auto text-center py-5 bg-titulos">
-              <h1>PROVEEDORES</h1>
+      <main class="text-center">
+          <div class="py-5 titulo">
+              <h1>Modificar Registro Proveedor</h1>
           </div>
-          <div class="container py-5">
-              <div class="text-center">
-                <P>Gama de productos que ofrecen los proveedores que componen nuestra cooperativa.</P>
-              </div>
-              <div id="carousel1" class="carousel slide" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li data-target="#carousel1" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel1" data-slide-to="1"></li>
-                    <li data-target="#carousel1" data-slide-to="2"></li>
-                    <li data-target="#carousel1" data-slide-to="3"></li>
-                    <li data-target="#carousel1" data-slide-to="4"></li>
-                    <li data-target="#carousel1" data-slide-to="5"></li>
-                  </ol>
-                  <!-- diapositivas -->
-                  <div class="carousel-inner">
-                      <div class="carousel-item active">
-                          <div class="img-carrusel1">
-                              <div class="carousel-caption">
-                                  <h3>BEBESTIBLES</h3>
-                              </div>
-                          </div>
+          <div class="container">
+              <div class="row">
+                  <form action="#" method="POST" id="Formulario">
+                      {% csrf_token %}
+                      <div class="form-group">
+                          {{form.as_table}}
                       </div>
-                      <div class="carousel-item">
-                          <div class="img-carrusel2">
-                              <div class="carousel-caption">
-                                  <h3>CARNES</h3>
-                              </div>
-                          </div>
+                      <div class="form-group">
+                        <input type="submit" id="modificar" class="btn btn-danger" value="Modificar">
+                        <input type= "reset" class="btn btn-primary" onclick="alert('datos limpiados correctamente')" value="Limpiar">
+                        <td><a href="{% url 'ver_registros' %}" class="btn btn-warning">Volver</a>                       
                       </div>
-                      <div class="carousel-item">
-                          <div class="img-carrusel3">
-                              <div class="carousel-caption">
-                                  <h3>FRUTAS Y VERDURAS</h3>
-                              </div>  
-                          </div>
-                      </div>
-                  </div>
-                  <!-- botones de desplazamiento a izquierda y derecha -->      
-                  <a class="carousel-control-prev" href="#carousel1" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="carousel-control-next" href="#carousel1" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
-              </div>
-          </div>
-      </section>
 
+                  </form>
+              </div>
+
+          </div>
       </main>
       <!--Footer-->
       <footer>
@@ -154,8 +100,6 @@
             </div>
         </div>
     </footer>
-
-    
     
 </body>
 </html>

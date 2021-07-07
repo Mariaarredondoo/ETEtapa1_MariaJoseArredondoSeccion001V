@@ -1,3 +1,71 @@
 .bg-orange{
     background-color: #00b3b3;
 }
+main{
+    background-color:#b3ecff ;
+}
+thead{
+    background-color: #e6f7ff ;
+}
+body{
+    margin:0;
+}
+
+/*Encabezado*/
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/hero-image.jpg");
+    height: 60vh;
+    width:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    font-size: 40px;
+}
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.bg-titulos{
+    background-color: lightseagreen;
+}
+
+
+
+/*seccion de eventos*/
+.img-carrusel1{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/bebestibles.jpg");
+    height: 80vh;
+    width:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.img-carrusel2{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/carne.jpg");
+    height: 80vh;
+    width:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.img-carrusel3{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/frutasyverduras.jpg");
+    height: 80vh;
+    width:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+

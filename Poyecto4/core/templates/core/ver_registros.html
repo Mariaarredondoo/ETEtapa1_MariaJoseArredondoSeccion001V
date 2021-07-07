@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Registros</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!--Estilos-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+    <!--Script Js-->
+    <link rel="stylesheet" href="{% static 'core/js/script.js' %}">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-orange">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Ground Zero</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'index'%}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'registrar'%}">Registro de proveedores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'ver_registros'%}">Mostrar proveedores</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+    <main>
+        <div class="text-center py-5">
+          <h1>Registros</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Número de Identificación</th>
+                            <th scope="col">Fotografía</th>
+                            <th scope="col">Nombre Completo</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">País</th>
+                            <th scope="col">Contraseña</th>
+                            <th scope="col">Moneda de Pago</th>
+                            <th scope="col">Opciones</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reg in registro %}
+                        <tr>                             
+                                <td>{{reg.numIdentificacion}}</td>
+                                <td>{{reg.fotografia}}</td>
+                                <td>{{reg.nomCompleto}}</td>
+                                <td>{{reg.telefono}}</td>
+                                <td>{{reg.direccion}}</td>
+                                <td>{{reg.mail}}</td>
+                                <td>{{reg.pais}}</td>
+                                <td>{{reg.contraseña}}</td>
+                                <td>{{reg.monedaPago}}</td>
+                                <td><a href="{% url 'modificar' reg.numIdentificacion %}" class="btn btn-info">Modificar</a></td>
+                                <td><a href="{% url 'eliminar' reg.numIdentificacion %}" class="btn btn-primary">Eliminar</a></td>                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!--Footer-->
+    <footer>
+      <div class="container-fluid w-100 text-light text-center py-4 bg-orange">
+          <div class="row">
+              <div class="col-md-4 py-2">
+                  <h5>Ground Zero</h5>
+                  <h6>©2021 Ground Zero. Todos los derechos reservados.</h6>
+                  <h6>Diseño: María Arredondo</h6>
+              </div>
+              <div class="col-md-4 py-2">
+                  <h5>Contáctanos:</h5>
+                  <h6>+56974676861</h6>
+                  <h6>ground.zero@gmail.com</h6>
+              </div>
+              <div class="col-md-4 py-2">
+                  <div class="container">
+                      <h5>Síguenos</h5>
+                      <div class="row">
+                          <div class="col-6">
+                              <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-4x mr-3 text-white"></i></a>
+                          </div>
+                          <div class="col-6">
+                              <a href="https://www.instagram.com/?hl=es-la"><i class="fab fa-instagram fa-4x mr-3 text-white"></i></a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+    
+</body>
+</html>

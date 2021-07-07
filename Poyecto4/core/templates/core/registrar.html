@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Optional JavaScript -->
+            <!-- jQuery first, Validate.js, then Bootstrap JS -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!--Estilos-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+
+    <!--Script Js-->
+    <link rel="stylesheet" href="{% static 'core/js/script.js' %}">
+    <script>
+      $(function() 
+      {
+        $("#form-reg").validate({
+            rules: {
+                    numIden: "required",
+                    foto: "required",
+                    nom: "required",
+                    phono: "required",
+                    dire: "required",
+                    mail: {
+                        required: true,
+                        email: true
+                    },
+                    pais: "required",
+                    pass: "required",
+                    mon: "required"  
+                    
+            }, //rules
+            messages: {
+                numIden: {
+                    required: 'Ingresa número de identificación'
+                },
+                foto: {
+                    required: 'Carga una foto'
+                },
+                nom: {
+                    required: 'Ingresa tu nombre completo'
+                },
+                phono:{
+                    required: 'Ingrese un número de contacto'
+                },
+                dire: {
+                    required: 'Ingresa una dirección'
+                },
+                mail: {
+                    required: 'Ingresa tu correo electrónico',
+                    email: 'Formato de correo no válido'
+                },
+                pais: {
+                    required: 'Ingresa un País'
+                },
+                pass: {
+                    required: 'Ingresa una contraseña',
+                    minlength: 'Caracteres insuficientes'
+                },
+                mon: {
+                    required: 'Ingresa una moneda'
+                }
+            }//messages
+        }); //$('formulario').validate
+    }); //function
+    </script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-orange">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Ground Zero</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{% url 'index'%}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'registrar'%}">Registro de proveedores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'ver_registros'%}">Mostrar proveedores</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <main class="text-center">
+        <div class=" py-5">
+          <h1>Regristro de Proveedores</h1>
+        </div>
+        <div class="container">
+          <form action="#" id= "form-reg" name="datos" method="POST">
+            {% csrf_token %}
+            <!--numero identificador-->
+            <div>
+              {{registro.numIdentificacion.label}}
+              {{registro.numIdentificacion}}
+            </div><br>
+            <!--Fotografía-->
+            <div>
+              {{registro.fotografia.label}}
+              {{registro.fotografia}}
+            </div><br>
+            <!--Nombre Completo-->
+            <div>
+              {{registro.nomCompleto.label}}
+              {{registro.nomCompleto}}
+            </div><br>
+            <!--Teléfono-->
+            <div>
+              {{registro.telefono.label}}
+              {{registro.telefono}}
+            </div><br>
+            <!--Dirección-->
+            <div>
+              {{registro.direccion.label}}
+              {{registro.direccion}}
+            </div><br>
+            <!--Email-->
+            <div>
+              {{registro.mail.label}}
+              {{registro.mail}}
+            </div><br>
+            <!--País-->
+            <div>
+              {{registro.pais.label}}
+              {{registro.pais}}
+            </div><br>
+            <!--Contraseña-->
+            <div>
+              {{registro.contraseña.label}}
+              {{registro.contraseña}}
+            </div><br>
+            <!--Moneda de pago-->
+            <div>
+              {{registro.monedaPago.label}}
+              {{registro.monedaPago}}
+            </div><br>
+            <!--Botones-->
+            <div>
+              <input type="submit" id="enviar" class="btn btn-info" value="Enviar">
+              <input type="reset" id="limpiar" class="btn btn-primary" value="Limpiar">
+            </div>
+          </form>
+        </div>
+      </main>
+      <!--Footer-->
+      <footer>
+        <div class="container-fluid w-100 text-light text-center py-4 bg-orange">
+            <div class="row">
+                <div class="col-md-4 py-2">
+                    <h5>Ground Zero</h5>
+                    <h6>©2021 Ground Zero. Todos los derechos reservados.</h6>
+                    <h6>Diseño: María Arredondo</h6>
+                </div>
+                <div class="col-md-4 py-2">
+                    <h5>Contáctanos:</h5>
+                    <h6>+56974676861</h6>
+                    <h6>ground.zero@gmail.com</h6>
+                </div>
+                <div class="col-md-4 py-2">
+                    <div class="container">
+                        <h5>Síguenos</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="https://www.facebook.com/"><i class="fab fa-facebook-square fa-4x mr-3 text-white"></i></a>
+                            </div>
+                            <div class="col-6">
+                                <a href="https://www.instagram.com/?hl=es-la"><i class="fab fa-instagram fa-4x mr-3 text-white"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
